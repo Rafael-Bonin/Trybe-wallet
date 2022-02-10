@@ -6,6 +6,6 @@ export default class Forms extends Component {
       <form>
         <input type="number" data-testid="value-input" />
       </form>
-    )
+    );
   }
 }

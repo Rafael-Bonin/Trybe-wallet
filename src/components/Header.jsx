@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -12,7 +12,7 @@ class Header extends Component {
         <section data-testid="total-field">0</section>
         <section data-testid="header-currency-field">BRL</section>
       </header>
-    )
+    );
   }
 }
 
@@ -22,6 +22,6 @@ const mapStateToProps = (state) => ({
 
 Header.propTypes = {
   email: PropTypes.string.isRequired,
-}
+};
 
 export default connect(mapStateToProps)(Header);
