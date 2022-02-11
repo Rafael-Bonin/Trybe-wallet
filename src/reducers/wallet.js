@@ -4,25 +4,11 @@ const INITIAL_STATE = {
   expenses: [],
 };
 
-const GET_INFOS = 'GET_INFOS';
 const FETCH_SUCCESS = 'FETCH_SUCCESS';
+const FETCH_CURRENCIES = 'FETCH_CURRENCIES';
 
 const walletReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-  case GET_INFOS:
-    return ({
-      ...state,
-      currencies: [...state.currencies],
-      expenses: [...state.expenses, {
-        id: action.id,
-        value: action.value,
-        description: action.description,
-        currency: action.currency,
-        method: action.method,
-        tag: action.tag,
-        exchangeRates: action.exchangeRates,
-      }],
-    });
   case FETCH_SUCCESS:
     return ({
       ...state,
@@ -35,6 +21,11 @@ const walletReducer = (state = INITIAL_STATE, action) => {
         tag: action.states.tag,
         exchangeRates: action.exchangeRates,
       }],
+    });
+  case FETCH_CURRENCIES:
+    return ({
+      ...state,
+      currencies: action.currencies,
     });
   default:
     return state;

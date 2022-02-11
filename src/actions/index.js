@@ -37,11 +37,27 @@ export const errorFetch = () => ({
   type: 'ERROR_FETCH',
 });
 
+export const fetchCurrencie = (currencies) => ({
+  type: 'FETCH_CURRENCIES',
+  currencies,
+});
+
 export const getMoneyThunk = (states) => async (dispatch) => {
   dispatch(startFetch());
   try {
     const APIFetch = await fetchAPI();
     dispatch(fetchSuccess(states, APIFetch));
+  } catch (error) {
+    dispatch(errorFetch());
+  }
+};
+
+export const getCurrencie = () => async (dispatch) => {
+  dispatch(startFetch());
+  try {
+    const APIFetch = await fetchAPI();
+    delete APIFetch.USDT;
+    dispatch(fetchCurrencie(APIFetch));
   } catch (error) {
     dispatch(errorFetch());
   }

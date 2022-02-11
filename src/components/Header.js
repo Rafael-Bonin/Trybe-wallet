@@ -7,20 +7,20 @@ class Header extends Component {
     super();
     this.state = {
       total: 0,
-    }
+    };
   }
 
   componentDidUpdate(prevProps) {
     const { wallet } = this.props;
     const { total } = this.state;
-    if (wallet !== prevProps.wallet) {
+    if (wallet.expenses !== prevProps.wallet.expenses) {
       wallet.expenses.map((expense) => {
-        const value = expense.value;
-        const currency = expense.currency;
+        const { value } = expense;
+        const { currency } = expense;
         const type = expense.exchangeRates[currency].ask;
         const sum = value * type;
         return this.setState({ total: total + sum });
-      })
+      });
     }
   }
 
@@ -44,7 +44,7 @@ const mapStateToProps = (state) => ({
 
 Header.propTypes = {
   email: PropTypes.string.isRequired,
-  wallet: PropTypes.object.isRequired,
+  wallet: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps)(Header);
