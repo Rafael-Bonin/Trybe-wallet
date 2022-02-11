@@ -56,6 +56,7 @@ class Forms extends Component {
           />
         </label>
         <label htmlFor="currency">
+          Moeda
           <select
             data-testid="currency-input"
             name="currency"
@@ -65,7 +66,13 @@ class Forms extends Component {
             } }
           >
             { Object.keys(currencies).map((currencie) => (
-              <option key={ currencie }>{ currencie }</option>
+              <option
+                key={ currencie }
+                value={ currencie }
+                data-testid={ currencie }
+              >
+                { currencie }
+              </option>
             )) }
           </select>
         </label>
